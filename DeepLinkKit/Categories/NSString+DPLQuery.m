@@ -19,10 +19,13 @@
     NSMutableDictionary *paramsDict = [NSMutableDictionary dictionaryWithCapacity:[params count]];
     for (NSString *param in params) {
         NSArray *pairs = [param componentsSeparatedByString:@"="];
-        if (pairs.count == 2) {
+        if (pairs.count >= 2) {
             // e.g. ?key=value
             NSString *key   = [pairs[0] DPL_stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSString *value = [pairs[1] DPL_stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSString *value = @"";
+            for(int i = 1; i < pairs.count; i++) {
+                value = [value stringByAppendingString:[pairs[i] DPL_stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            }
             paramsDict[key] = value;
         }
         else if (pairs.count == 1) {
