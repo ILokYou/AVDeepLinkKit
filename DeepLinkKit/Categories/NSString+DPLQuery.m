@@ -22,10 +22,7 @@
         if (pairs.count >= 2) {
             // e.g. ?key=value
             NSString *key   = [pairs[0] DPL_stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSString *value = @"";
-            for(int i = 1; i < pairs.count; i++) {
-                value = [value stringByAppendingString:[pairs[i] DPL_stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            }
+            NSString *value = [[pairs subarrayWithRange:NSMakeRange(1, pairs.count-1)] componentsJoinedByString:@"="];
             paramsDict[key] = value;
         }
         else if (pairs.count == 1) {
