@@ -90,8 +90,7 @@ typedef void(^DPLRouteCompletionBlock)(BOOL handled, NSError *error);
  
  @see DPLRouteCompletionBlock
  */
-- (BOOL)handleURL:(NSURL *)url withCompletion:(DPLRouteCompletionBlock)completionHandler;
-
+- (BOOL)handleURL:(NSURL *)url forceNewScreen:(BOOL)newScreen withCompletion:(DPLRouteCompletionBlock)completionHandler;
 
 /**
  Attempts to handle an incoming user activity.
