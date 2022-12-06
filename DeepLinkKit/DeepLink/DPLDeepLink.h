@@ -50,7 +50,7 @@
  A deep link parameter that indicates how to treat deeplink :
  must open a new controller or use in current navoigation
  */
-@property (nonatomic) BOOL shouldBeNewsScreen;
+@property (nonatomic) BOOL forceNewScreen;
 
 
 ///--------------------------------------------------
