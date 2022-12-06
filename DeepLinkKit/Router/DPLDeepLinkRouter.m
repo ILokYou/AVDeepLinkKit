@@ -109,7 +109,7 @@
 
 #pragma mark - Routing Deep Links
 
-- (BOOL)handleURL:(NSURL *)url withCompletion:(DPLRouteCompletionBlock)completionHandler {
+- (BOOL)handleURL:(NSURL *)url withCompletion:(DPLRouteCompletionBlock)completionHandler forceNewScreen:(BOOL)newScreen {
     if (!url) {
         return NO;
     }
@@ -125,6 +125,8 @@
     for (NSString *route in self.routes) {
         DPLRouteMatcher *matcher = [DPLRouteMatcher matcherWithRoute:route];
         deepLink = [matcher deepLinkWithURL:url];
+        deepLink.shouldBeNewsScreen = newScreen;
+        
         if (deepLink) {
             isHandled = [self handleRoute:route withDeepLink:deepLink error:&error];
             if (isHandled) {
