@@ -148,7 +148,7 @@
 
 - (BOOL)handleUserActivity:(NSUserActivity *)userActivity withCompletion:(DPLRouteCompletionBlock)completionHandler {
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        return [self handleURL:userActivity.webpageURL withCompletion:completionHandler];
+        return [self handleURL:userActivity.webpageURL forceNewScreen:false withCompletion:completionHandler];
     }
     
     return NO;
